@@ -1,0 +1,6 @@
+Referencing the same page all the time will result in the highest hit/miss ratio
+And referencing a different page each time will decrease the ratio to 0
+
+
+Except from those case, having the references to the same page closer together will increase the ratio
+and having the references more evenly distributed through time will decrease the ratio

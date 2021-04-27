@@ -1,0 +1,8 @@
+chmod ugo-x _ex3.txt
+chmod uo+rwx _ex3.txt
+chmod g=u _ex3.txt
+
+
+660 means rw for the owner and group and no rights for the rest
+775 means rwx for the owner and group and rx for the rest
+777 means rwx for everyone

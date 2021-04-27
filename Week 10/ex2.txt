@@ -1,0 +1,13 @@
+link week01/file.txt _ex2.txt  -->
+
+ls -i week01/file.txt  ---> 1845371 week01/file.txt
+
+
+
+find week01/file.txt -inum 1845371
+
+./_ex2.txt
+./week01/file.txt
+
+
+

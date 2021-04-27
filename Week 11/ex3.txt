@@ -1,0 +1,13 @@
+In Program 1, the output is 2 lines each one with the word Hello
+In Program 1, the output is 3 lines: the first line contains the word Hello, the other 2 lines are empty
+
+
+This is because printf uses a line buffer (output is buffered until a '\n' character is added)
+
+Explanation: in program 1, Hello is put in the buffer, then fork creates a child process with the same buffer.
+We end up with 2 processes, each process has Hello in each buffer, waiting to be printed to the console.
+When we print the '\n' character, the buffer is cleared and "Hello\n" is printed twice.
+
+In program 2, "Hello\n" goes to the buffer but it is cleared immediately since it ends with a new line character
+Therefore "Hello\n" is printed.
+After that, the process forks and we have 2 processes, each of them prints a newline character, thus the 2 empty lines at the end of the output.

@@ -1,0 +1,49 @@
+If we increase the buffer size, the copy program becomes faster. 
+
+If the buffer is too small, it gets cleared often, and each time it is cleared the program issues a system call to write to the destination file. System calls are costly and they slow down the program.
+
+
+If we add the O_SYNC flag by defining SYNC in the preprocessor directives (check line 24 of copy.c), the program becomes slower.
+This is due to the input and output being synced, i.e. the program waits for the system to write in the output file before reading the next bit of data from the input file.
+
+
+Here are the time stats results for comparison:
+
+DBUF_SIZE=1, NO SYNC:
+
+real	0m0.009s
+user	0m0.009s
+sys	0m0.000s
+
+DBUF_SIZE=4, NO SYNC:
+
+real	0m0.004s
+user	0m0.004s
+sys	0m0.001s
+
+
+DBUF_SIZE=4, NO SYNC:
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+DBUF_SIZE=1, WITH SYNC:
+
+real	0m23.217s
+user	0m0.012s
+sys	0m0.126s
+
+BUF_SIZE=4, WITH SYNC:
+
+real	0m5.634s
+user	0m0.001s
+sys	0m0.036s
+
+DBUF_SIZE=16, WITH SYNC:
+
+real	0m1.556s
+user	0m0.001s
+sys	0m0.011s
+
+
